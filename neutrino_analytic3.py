@@ -65,33 +65,41 @@ def MATRIXCHIDIAG(vevSM, MN, MPsi, Meta, l1, l2, y1, y2):
     return dcOut
 
 #Loop factor
-def LAMBDA(mNk,mSk,Vk2,Uk1):
+def LAMBDA(mj,mSi,Vj2,Uj1):
     
-    mk = 1./(16.*np.pi**2)*Vk2*Uk1*(mNk**3/(mNk**2-mSk**2))*np.log(mNk**2/mSk**2)
+    Lji = 1./(16.*np.pi**2)*Vj2*Uj1*(mj**3/(mj**2-mSi**2))*np.log(mj**2/mSi**2)
     
-    return mk   
+    return Lji  
 
-#Mab matrix. sum over i and k is expanded
-def Mab(YB1b,YB2b,YA1a,YA2a,m1,m2,ms1,ms2,V12,V22,U11,U21):
-    sumS1= (LAMBDA(m1, ms1, V12, U11)+LAMBDA(m2, ms1, V22, U21))*(YB1b*YA1a) 
+#Mab matrix. sum over j and i (a,b) means (alpha,beta) elements of the matrix
+def Mab(ha1,ha2,ha3,fb1,fb2,fb3,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31):
     
-    sumS2= (LAMBDA(m1, ms2, V12, U11)+LAMBDA(m2, ms2, V22, U21))*(YB2b*YA2a) 
+    #sum over j with i=1
+    sumS1= (LAMBDA(m1, ms1, V12, U11) + LAMBDA(m2, ms1, V22, U21) + LAMBDA(m3, ms1, V32, U31))*(ha1*fb1) 
+    #sum over j with i=2  
+    sumS2= (LAMBDA(m1, ms2, V12, U11) + LAMBDA(m2, ms2, V22, U21) + LAMBDA(m3, ms2, V32, U31))*(ha2*fb2) 
+    #sum over j with i=3  
+    sumS3= (LAMBDA(m1, ms3, V12, U11) + LAMBDA(m2, ms3, V22, U21) + LAMBDA(m3, ms3, V32, U31))*(ha3*fb3) 
     
-    return sumS1 + sumS2
+    return sumS1+sumS2+sumS3
 
 #Compute the neutrino eigenvalues
-def MATRIX_NU_DIAG(YB11,YB12,YB13,YB21,YB22,YB23,YA11,YA12,YA13,YA21,YA22,YA23,mS1,mS2,m1,m2,m3,V12,V22,U11,U21):    
+#(h,f) means the kind of Yukawa
+def MATRIX_NU_DIAG(h11,h12,h13,h21,h22,h23,h31,h32,h33,f11,f12,f13,f21,f22,f23,f31,f32,f33,ms1,ms2,ms3,m1,m2,m3,V12,V22,V32,U11,U21,U31):    
     
     #Matrix elements
-    M11 = Mab(YB11,YB21,YA11,YA21,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M12 = Mab(YB11,YB21,YA12,YA22,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M13 = Mab(YB11,YB21,YA13,YA23,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M21 = Mab(YB12,YB22,YA11,YA21,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M22 = Mab(YB12,YB22,YA12,YA22,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M23 = Mab(YB12,YB22,YA13,YA23,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M31 = Mab(YB13,YB23,YA11,YA21,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M32 = Mab(YB13,YB23,YA12,YA22,m1,m2,mS1,mS2,V12,V22,U11,U21)
-    M33 = Mab(YB13,YB23,YA13,YA23,m1,m2,mS1,mS2,V12,V22,U11,U21)
+    M11 = Mab(h11,h12,h13,f11,f12,f13,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    
+    M12 = Mab(h11,h12,h13,f21,f22,f23,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    M13 = Mab(h11,h12,h13,f31,f32,f33,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    M21 = Mab(h21,h22,h23,f11,f12,f13,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    M22 = Mab(h21,h22,h23,f21,f22,f23,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    M23 = Mab(h21,h22,h23,f31,f32,f33,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    M31 = Mab(h31,h32,h33,f11,f12,f13,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    
+    M32 = Mab(h31,h32,h33,f21,f22,f23,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
+    
+    M33 = Mab(h31,h32,h33,f31,f32,f33,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
 
 
     Mvij = np.matrix( [[M11, M12, M13],
@@ -144,11 +152,8 @@ def MATRIX_NU_DIAG(YB11,YB12,YB13,YB21,YB22,YB23,YA11,YA12,YA13,YA21,YA22,YA23,m
             mn2 = MX2
             mn3 = MX1
 
-    #print("Theoretical values found:")        
-    #print(mn1, mn2,mn3)   
-
     return mn1, mn2, mn3
 
 #run all dataframe
 MatrixDiag_new=np.vectorize(MATRIX_NU_DIAG,excluded={'vev':246.2,'LAMBDA':1E16},doc='Input for pyfunc below:\
-			    YB11,YB12,YB13,YB21,YB22,YB23,YA11,YA12,YA13,YA21,YA22,YA23,mS1,mS2')
+			    h11,h12,h13,h21,h22,h23,h31,h32,h33,f11,f12,f13,f21,f22,f23,f31,f32,f33,ms1,ms2,ms3,m1,m2,m3,V12,V22,V32,U11,U21,U31')
