@@ -35,28 +35,17 @@ def nuexpvalues():
     Uphases = np.array([ [np.exp(eta1*1j),0.,0.], [0.,np.exp(eta2*1j),0.], [0.,0.,1.0] ])
     U=np.dot(UM23,np.dot(UM13,np.dot(UM12,Uphases)))
 
-    #Defining the U elementes. readeable
-    #U11 = np.real(U[0,0])
-    #U12 = np.real(U[0,1])
-    #U13 = np.real(U[0,2])
-    #U21 = np.real(U[1,0])
-    #U22 = np.real(U[1,1])
-    #U23 = np.real(U[1,2])
-    #U31 = np.real(U[2,0])
-    #U32 = np.real(U[2,1])
-    #U33 = np.real(U[2,2])
-
     dcOut['mnu1']= mnu1
     dcOut['mnu2']= mnu2
     dcOut['mnu3']= mnu3
-    dcOut['U11']= np.real(U[0,0])
-    dcOut['U12']= np.real(U[0,1])
-    dcOut['U13']= np.real(U[0,2])
-    dcOut['U21']= np.real(U[1,0])
-    dcOut['U22']= np.real(U[1,1])
-    dcOut['U23']= np.real(U[1,2])
-    dcOut['U31']= np.real(U[2,0])
-    dcOut['U32']= np.real(U[2,1])
-    dcOut['U33']= np.real(U[2,2])
+    dcOut['U11']= np.real(U[0,0])*1.
+    dcOut['U12']= np.real(U[0,1])*1.
+    dcOut['U13']= np.real(U[0,2])*1.
+    dcOut['U21']= np.real(U[1,0])*1.
+    dcOut['U22']= np.real(U[1,1])*1.
+    dcOut['U23']= np.real(U[1,2])*1.
+    dcOut['U31']= np.real(U[2,0])*1.
+    dcOut['U32']= np.real(U[2,1])*1.
+    dcOut['U33']= np.real(U[2,2])*1.
 
     return dcOut
