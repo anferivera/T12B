@@ -7,7 +7,7 @@ import time
 import sys
 
 #PMNS matrix 2018 to 3\sigma https://arxiv.org/abs/1708.01186
-def nuexpvalues():   
+def NH():   
 
     dcOut={}
     #phases of the PMNS matrix and the R 

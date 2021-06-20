@@ -65,9 +65,16 @@ def MATRIXCHIDIAG(vevSM, MN, MPsi, Meta, l1, l2, y1, y2):
     return dcOut
 
 #Loop factor
+#def LAMBDA(mj,mSi,Vj2,Uj1):
+#    
+#    Lji = 1./(16.*np.pi**2)*Vj2*Uj1*(mj**3/(mj**2-mSi**2))*np.log(mj**2/mSi**2)
+#    
+#    return Lji  
+
+#Loop factor
 def LAMBDA(mj,mSi,Vj2,Uj1):
     
-    Lji = 1./(16.*np.pi**2)*Vj2*Uj1*(mj**3/(mj**2-mSi**2))*np.log(mj**2/mSi**2)
+    Lji = 1./(16.*np.pi**2)*Vj2*Uj1*mj*( (mj**2*np.log(mj**2) - mSi**2*np.log(mSi**2))/(mj**2-mSi**2))
     
     return Lji  
 
