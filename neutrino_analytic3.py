@@ -102,10 +102,8 @@ def MATRIX_NU_DIAG(h11,h12,h13,h21,h22,h23,h31,h32,h33,f11,f12,f13,f21,f22,f23,f
     M21 = Mab(h21,h22,h23,f11,f12,f13,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
     M22 = Mab(h21,h22,h23,f21,f22,f23,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
     M23 = Mab(h21,h22,h23,f31,f32,f33,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
-    M31 = Mab(h31,h32,h33,f11,f12,f13,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
-    
+    M31 = Mab(h31,h32,h33,f11,f12,f13,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)   
     M32 = Mab(h31,h32,h33,f21,f22,f23,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
-    
     M33 = Mab(h31,h32,h33,f31,f32,f33,m1,m2,m3,ms1,ms2,ms3,V12,V22,V32,U11,U21,U31)
 
 
