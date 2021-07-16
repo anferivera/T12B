@@ -37,7 +37,7 @@ def buildSLHAinFile():
 
     LHA.blocks['SPHENOINPUT'].entries[1]='-1              # error level'  
     LHA.blocks['SPHENOINPUT'].entries[2]='0              # SPA conventions' 
-    LHA.blocks['SPHENOINPUT'].entries[7]='1              # Skip 2-loop Higgs corrections' 
+    LHA.blocks['SPHENOINPUT'].entries[7]='0              # Skip 2-loop Higgs corrections' 
     LHA.blocks['SPHENOINPUT'].entries[8]='3              # Method used for two-loop calculation' 
     LHA.blocks['SPHENOINPUT'].entries[9]='1              # Gaugeless limit used at two-loop'
     LHA.blocks['SPHENOINPUT'].entries[10]='0              # safe-mode used at two-loop '
@@ -83,29 +83,29 @@ def buildSLHAinFile():
 
     #Block DECAYOPTIONS   # Options to turn on/off specific decays 
     #Block YFR1IN    #  
-    LHA.blocks['YFR1IN'].entries[1]='1.000000E-02         # YfR1(1)'
-    LHA.blocks['YFR1IN'].entries[2]='2.000000E-03         # YfR1(2)'
-    LHA.blocks['YFR1IN'].entries[3]='3.000000E-03         # YfR1(3)'
+    LHA.blocks['YFR1IN'].entries[1]='0.000000E-02         # YfR1(1)'
+    LHA.blocks['YFR1IN'].entries[2]='2.000000E-04         # YfR1(2)'
+    LHA.blocks['YFR1IN'].entries[3]='3.000000E-05         # YfR1(3)'
 
-    LHA.blocks['YFR2IN'].entries[1]='1.000000E-02         # YfR2(1)'
-    LHA.blocks['YFR2IN'].entries[2]='2.000000E-02         # YfR2(2)'
-    LHA.blocks['YFR2IN'].entries[3]='1.000000E-02         # YfR2(3)'
+    LHA.blocks['YFR2IN'].entries[1]='0.000000E-02         # YfR2(1)'
+    LHA.blocks['YFR2IN'].entries[2]='2.100000E-05         # YfR2(2)'
+    LHA.blocks['YFR2IN'].entries[3]='1.100000E-04         # YfR2(3)'
 
-    LHA.blocks['YFR3IN'].entries[1]='2.000000E-03         # YfR3(1)'
-    LHA.blocks['YFR3IN'].entries[2]='3.000000E-03         # YfR3(2)'
-    LHA.blocks['YFR3IN'].entries[3]='1.000000E-03         # YfR3(3)'
+    LHA.blocks['YFR3IN'].entries[1]='0.000000E-03         # YfR3(1)'
+    LHA.blocks['YFR3IN'].entries[2]='3.100000E-05         # YfR3(2)'
+    LHA.blocks['YFR3IN'].entries[3]='1.200000E-06         # YfR3(3)'
 
     LHA.blocks['YHR1IN'].entries[1]='1.000000E-02         # YhR1(1)'
     LHA.blocks['YHR1IN'].entries[2]='2.000000E-02         # YhR1(2)'
     LHA.blocks['YHR1IN'].entries[3]='3.000000E-02         # YhR1(3)'
 
     LHA.blocks['YHR2IN'].entries[1]='1.000000E-03         # YhR2(1)'
-    LHA.blocks['YHR2IN'].entries[2]='2.000000E-03         # YhR2(2)'
+    LHA.blocks['YHR2IN'].entries[2]='2.000000E-04         # YhR2(2)'
     LHA.blocks['YHR2IN'].entries[3]='3.000000E-03         # YhR2(3)'
 
     LHA.blocks['YHR3IN'].entries[1]='1.000000E-03         # YhR3(1)'
-    LHA.blocks['YHR3IN'].entries[2]='2.000000E-03         # YhR3(2)'
-    LHA.blocks['YHR3IN'].entries[3]='2.000000E-03         # YhR3(3)'
+    LHA.blocks['YHR3IN'].entries[2]='2.000000E-04         # YhR3(2)'
+    LHA.blocks['YHR3IN'].entries[3]='3.000000E-03         # YhR3(3)'
 
     LHA.blocks['MKIN'].entries[1]='1.000000E+02         # MK'
 
